@@ -1,0 +1,84 @@
+fastlane_version "1.100.0"
+
+default_platform :ios
+
+platform :ios do
+
+  desc "Runs all the tests"
+  lane :test do
+    scan
+  end
+
+  desc "Do a patch release"
+  lane :release_patch do
+    release(type: "patch")
+  end
+
+  desc "Do a minor release"
+  lane :release_minor do
+    release(type: "minor")
+  end
+
+  desc "Do a major release"
+  lane :release_major do
+    release(type: "major")
+  end
+
+  desc "Build and release a new pod version"
+  private_lane :release do |options|
+    
+    ensure_git_status_clean
+    ensure_git_branch
+    
+    type = options[:type]
+
+    # Test
+    test
+    
+    increment_build_number
+
+    version_bump_podspec(
+      path: "PersistentUUID.podspec",
+      bump_type: type
+    )
+
+    podspec_version = version_get_podspec(path: "PersistentUUID.podspec")
+
+    increment_version_number(
+      version_number: podspec_version
+    )
+    
+    # Final linting
+    pod_lib_lint
+
+    add_git_tag(
+      tag: podspec_version
+    )
+
+    # Commit the version bumps
+    git_commit(
+      path: [
+        "./PersistentUUID.podspec", 
+        "./PersistentUUID.xcodeproj/project.pbxproj",
+        "./PersistentUUID/Info.plist",
+        "./PersistentUUIDTests/Info.plist"
+      ],
+      message: "Version Bump"
+    )
+    
+    push_to_git_remote(
+      tags: true
+    )
+
+    pod_push
+
+  end
+
+end
+
+
+# More information about multiple platforms in fastlane: https://github.com/fastlane/fastlane/blob/master/fastlane/docs/Platforms.md
+# All available actions: https://github.com/fastlane/fastlane/blob/master/fastlane/docs/Actions.md
+
+# fastlane reports which actions are used
+# No personal data is recorded. Learn more at https://github.com/fastlane/enhancer

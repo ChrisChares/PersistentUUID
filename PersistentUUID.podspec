@@ -21,11 +21,11 @@ Pod::Spec.new do |s|
 Access a UUID that persists through app deletion and reinstallation.
                        DESC
 
-  s.homepage         = 'https://github.com/<GITHUB_USERNAME>/PersistentUUID'
+  s.homepage         = 'https://github.com/chrischares/PersistentUUID'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Chris Chares' => 'chris@chares.io' }
-  s.source           = { :git => 'https://github.com/<GITHUB_USERNAME>/PersistentUUID.git', :tag => s.version.to_s }
+s.source           = { :git => 'https://github.com/chrischares/PersistentUUID.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.ios.deployment_target = '8.0'
