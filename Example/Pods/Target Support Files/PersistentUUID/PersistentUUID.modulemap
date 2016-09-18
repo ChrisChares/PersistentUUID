@@ -1,0 +1,6 @@
+framework module PersistentUUID {
+  umbrella header "PersistentUUID-umbrella.h"
+
+  export *
+  module * { export * }
+}
