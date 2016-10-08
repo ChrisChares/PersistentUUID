@@ -1,25 +1,25 @@
 PODS:
-  - KeychainAccess (2.4.0)
-  - Nimble (3.2.0)
-  - PersistentUUID (0.1.0):
-    - KeychainAccess (~> 2.4.0)
-  - Quick (0.9.3)
+  - KeychainAccess (3.0.0)
+  - Nimble (5.0.0)
+  - PersistentUUID (0.5.0):
+    - KeychainAccess (~> 3.0.0)
+  - Quick (0.10.0)
 
 DEPENDENCIES:
-  - Nimble (~> 3.0)
+  - Nimble
   - PersistentUUID (from `../`)
-  - Quick (~> 0.8)
+  - Quick
 
 EXTERNAL SOURCES:
   PersistentUUID:
     :path: ../
 
 SPEC CHECKSUMS:
-  KeychainAccess: c2a71459af5bddf720a51806046a598500976c04
-  Nimble: 703854335d181df169bbca9c97117b5cf8c47c1d
-  PersistentUUID: 480af30886aba41e632f9991ba4cc64ac848ba12
-  Quick: 13a2a2b19a5d8e3ed4fd0c36ee46597fd77ebf71
+  KeychainAccess: 412bf2650d9aebfc8135a58103b90ec38caad7f8
+  Nimble: 56fc9f5020effa2206de22c3dd910f4fb011b92f
+  PersistentUUID: 773b3429d28b34787ff5cd6e0c732a487b10a666
+  Quick: 5d290df1c69d5ee2f0729956dcf0fd9a30447eaa
 
-PODFILE CHECKSUM: ecec946c6c99c4fb407a9836020a85d6078eaa40
+PODFILE CHECKSUM: f7f992cd39357e3656444708763ce71b18d53d74
 
-COCOAPODS: 1.0.1
+COCOAPODS: 1.1.0.rc.2

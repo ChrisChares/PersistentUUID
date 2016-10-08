@@ -9,34 +9,36 @@
 import Foundation
 import KeychainAccess
 
-public typealias UUIDResponse = (uuid: String, new: Bool) -> Void
+public typealias UUIDResponse = (_ uuid: String, _ new: Bool) -> Void
 
 private let STORAGE_KEY = "app_storage_key"
 
-extension NSUUID {
+extension UUID {
     public static var persistentUUID: String {
         //First we check NSUserDefaults
-        if let uuid = NSUserDefaults.standardUserDefaults().objectForKey(STORAGE_KEY) as? String {
+        if let uuid = UserDefaults.standard.object(forKey: STORAGE_KEY) as? String {
             return uuid
         }
         
         //Now we check keychain
-        let keychain = Keychain(service: NSBundle.mainBundle().bundleIdentifier!)
+        //let keychain = Keychain(service)
+        let bundleID = Bundle.main.bundleIdentifier!
+        let keychain = Keychain(service: bundleID)
         if let uuid = keychain[STORAGE_KEY] {
             writeDefaults(uuid)
             return uuid
         }
         
         // If we're still here we're going to create a new UUID and pass it back
-        let uuid: String = NSUUID().UUIDString
+        let uuid: String = UUID().uuidString
         writeDefaults(uuid)
         keychain[STORAGE_KEY] = uuid
         return uuid
     }
 
-    private static func writeDefaults(uuid: String) {
-        NSUserDefaults.standardUserDefaults().setObject(uuid, forKey: STORAGE_KEY)
-        NSUserDefaults.standardUserDefaults().synchronize()
+    fileprivate static func writeDefaults(_ uuid: String) {
+        UserDefaults.standard.set(uuid, forKey: STORAGE_KEY)
+        UserDefaults.standard.synchronize()
     }
 }
 

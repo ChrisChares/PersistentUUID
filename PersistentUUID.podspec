@@ -38,5 +38,5 @@ s.source           = { :git => 'https://github.com/chrischares/PersistentUUID.gi
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
-  s.dependency 'KeychainAccess', '~> 2.4.0'
+  s.dependency 'KeychainAccess', '~> 3.0.0'
 end

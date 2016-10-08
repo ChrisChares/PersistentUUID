@@ -1,9 +1,9 @@
 {
   "name": "PersistentUUID",
-  "version": "0.1.0",
+  "version": "0.5.0",
   "summary": "Persistent UUIDs",
   "description": "Access a UUID that persists through app deletion and reinstallation.",
-  "homepage": "https://github.com/<GITHUB_USERNAME>/PersistentUUID",
+  "homepage": "https://github.com/chrischares/PersistentUUID",
   "license": {
     "type": "MIT",
     "file": "LICENSE"
@@ -12,8 +12,8 @@
     "Chris Chares": "chris@chares.io"
   },
   "source": {
-    "git": "https://github.com/<GITHUB_USERNAME>/PersistentUUID.git",
-    "tag": "0.1.0"
+    "git": "https://github.com/chrischares/PersistentUUID.git",
+    "tag": "0.5.0"
   },
   "platforms": {
     "ios": "8.0"
@@ -21,7 +21,7 @@
   "source_files": "PersistentUUID/Classes/**/*",
   "dependencies": {
     "KeychainAccess": [
-      "~> 2.4.0"
+      "~> 3.0.0"
     ]
   }
 }
